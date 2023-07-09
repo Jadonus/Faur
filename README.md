@@ -24,6 +24,8 @@ Eventually I will make an aur package, but right now you need to do it manually.
 first run ```git clone https://github.com/Jadonus/faur.git``` to clone this repo.
 Then ``` pip install pkgbuilder``` (with python-pip installed) to get the dependency for this.
 Finally, for a shortterm use of this, run ```python3 faur``` to run Faur!
+If you with to run it without when not in that directory or when not using python3 before it, add it to your path by running```chmod +x faur``` then, ```cp faur ~/.local/bin/```
+You now have Faur installed. YAY! Wait not yay. Faur!
 
 
 
