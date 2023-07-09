@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="ascii.svg" />
+  <img src="ascii-.png" />
 </p>
 <p align="center">
 The fancy AUR helper
