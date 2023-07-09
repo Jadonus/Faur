@@ -23,9 +23,11 @@ Faur is a simple python aur helper built for ricers. It is built with the awesom
 Eventually I will make an aur package, but right now you need to do it manually.
 first run ```git clone https://github.com/Jadonus/faur.git``` to clone this repo.
 Then ``` pip install pkgbuilder``` (with python-pip installed) to get the dependency for this.
+Finally, for a shortterm use of this, run ```python3 faur``` to run Faur!
 
 
 
 
-  python3 faur
+
+  
   
