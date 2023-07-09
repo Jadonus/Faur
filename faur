@@ -1,0 +1,139 @@
+#! /usr/bin/python3
+import pkgbuilder
+import subprocess
+import glob
+import pkgbuilder.utils
+import pkgbuilder.upgrade
+import os
+import random
+import argparse
+from colorama import Fore, Style
+import time
+import pkgbuilder.ui
+import pkgbuilder.build
+colorlist=['Fore.BLUE','Fore.RED','Fore.YELLOW','Fore.GREEN','Fore.ORANGE','Fore.PURPLE','Fore.CYAN'] 
+randomcolor=random.choice(colorlist)
+def install():
+    try:
+        packagename = args.install 
+
+        info = pkgbuilder.utils.info(packagename)
+        print('Package info:',info)
+        time.sleep(1)
+        
+        hello = pkgbuilder.ui.get_termwidth()
+        packagenamepath = "/home/jadong/" + packagename
+        try:
+            pkgbuilder.build.auto_build(packagename)
+            print(Fore.RED +'''
+        ██████╗ ██╗   ██╗██╗██╗     ██████╗ ██╗███╗   ██╗ ██████╗          
+        ██╔══██╗██║   ██║██║██║     ██╔══██╗██║████╗  ██║██╔════╝          
+        ██████╔╝██║   ██║██║██║     ██║  ██║██║██╔██╗ ██║██║  ███╗         
+        ██╔══██╗██║   ██║██║██║     ██║  ██║██║██║╚██╗██║██║   ██║         
+        ██████╔╝╚██████╔╝██║███████╗██████╔╝██║██║ ╚████║╚██████╔╝██╗██╗██╗
+        ╚═════╝  ╚═════╝ ╚═╝╚══════╝╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝╚═╝╚═╝
+              ''')
+
+        except pkgbuilder.exceptions.PackageNotFoundError:
+            print('This Package does not exist. Try A different name?')
+            exit()
+        print(Style.RESET_ALL)
+        print('='*hello)
+        print(Fore.YELLOW+'''
+        ██╗███╗   ██╗███████╗████████╗ █████╗ ██╗     ██╗     ██╗███╗   ██╗ ██████╗          
+        ██║████╗  ██║██╔════╝╚══██╔══╝██╔══██╗██║     ██║     ██║████╗  ██║██╔════╝          
+        ██║██╔██╗ ██║███████╗   ██║   ███████║██║     ██║     ██║██╔██╗ ██║██║  ███╗         
+        ██║██║╚██╗██║╚════██║   ██║   ██╔══██║██║     ██║     ██║██║╚██╗██║██║   ██║         
+        ██║██║ ╚████║███████║   ██║   ██║  ██║███████╗███████╗██║██║ ╚████║╚██████╔╝██╗██╗██╗
+        ╚═╝╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝╚═╝╚═╝
+            ''')
+
+        print(Style.RESET_ALL)
+        subprocess.run(['sudo', 'pacman', '-U']+ glob.glob(os.path.join(packagenamepath,'*.pkg.tar.zst')))
+        print('='*hello)
+        subprocess.run(['rm', '-rf',packagename])
+        print('''
+    ██████╗  ██████╗ ███╗   ██╗███████╗██╗
+    ██╔══██╗██╔═══██╗████╗  ██║██╔════╝██║
+    ██║  ██║██║   ██║██╔██╗ ██║█████╗  ██║
+    ██║  ██║██║   ██║██║╚██╗██║██╔══╝  ╚═╝
+    ██████╔╝╚██████╔╝██║ ╚████║███████╗██╗
+    ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚══════╝╚═╝
+                                      
+              ''')
+    except KeyboardInterrupt:
+        print(' ')
+
+arg_desc = '''\
+███████╗ █████╗ ██╗   ██╗██████╗     
+██╔════╝██╔══██╗██║   ██║██╔══██╗    
+█████╗  ███████║██║   ██║██████╔╝    
+██╔══╝  ██╔══██║██║   ██║██╔══██╗    
+██║     ██║  ██║╚██████╔╝██║  ██║    
+╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝ 
+        FANCY AUR HELPER'''
+def upgrade():
+    try:
+
+        print("Checking for upgrades...")
+        pkgbuilder.upgrade.auto_upgrade()
+    except KeyboardInterrupt:
+        print(' ')
+
+def search():
+    try:
+        searchname=input("📦Search For Package>>>")
+        searcher = pkgbuilder.utils.search(pkgname=searchname)
+        print(searcher)
+    except KeyboardInterrupt:
+        print(' ')
+def dashboard():
+    try: 
+            subprocess.run(['pacman','-Qm'])
+            print (Fore.GREEN +'''                                           ^
+    Total installed AUR packages           |
+    _______________________________________|
+
+            ███████╗ █████╗ ██╗   ██╗██████╗      
+            ██╔════╝██╔══██╗██║   ██║██╔══██╗    
+            █████╗  ███████║██║   ██║██████╔╝    
+            ██╔══╝  ██╔══██║██║   ██║██╔══██╗    
+            ██║     ██║  ██║╚██████╔╝██║  ██║    
+            ╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝ 
+
+            ''')
+             
+            hello = pkgbuilder.ui.get_termwidth()
+            quotes = ['one does not simply install an aur package','The AUR: I cant get my package in the main repos ', 'I use Arch btw',]
+            print(Style.RESET_ALL)
+            print('''
+            Some AUR Facts:
+            📦•There are ~91,000 Packages in the AUR
+            🔥•The most popular AUR package is yay.
+            🚀•The package with the most votes is Dropbox.
+             
+                  ''')
+            print(random.choice(quotes))
+            print('-'*hello)
+            exit()
+    except KeyboardInterrupt:
+            print(' ')
+
+parser = argparse.ArgumentParser(description=arg_desc,formatter_class = argparse.RawDescriptionHelpFormatter)
+parser.add_argument('-S','--install',help='Install package')
+parser.add_argument('-s', '--search',help='Search For Package',dest='search', action='store_true')
+parser.add_argument('-Syu','--upgrade',help='Upgrade AUR packages',action='store_true')
+args = parser.parse_args()
+if args.install:
+    with pkgbuilder.ui.Throbber('Thinking...'):
+        install()
+if args.search:
+    search()
+if args.upgrade:
+    with pkgbuilder.ui.Throbber('Checking For Upgrades...'):
+        upgrade()
+else:
+    dashboard()
+
+
+
