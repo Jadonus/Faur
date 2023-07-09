@@ -34,7 +34,7 @@ You now have Faur installed. YAY! Wait not yay. Faur!
 Running ```faur -h``` will give you a list of arguments. Overall it uses similar arguments to pacman, -Syu, -S etc. 
 Running faur with no arguments will give you a fun and totally useless dashboard. But as we all know, us ricers love useless.
 
-![The useless dashboard](/dashboard.png"The Useless Dashboard")
+![The useless dashboard](/dashboard.png)The Useless Dashboard
 
 
 
