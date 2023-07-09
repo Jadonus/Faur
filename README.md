@@ -3,7 +3,7 @@
   <img src="ascii-.png" />
 </p>
 <p align="center">
-The fancy AUR helper.
+The <em>fancy</em> AUR helper.
 </p>
 <p align="center">
   <img src="https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue" />
@@ -20,3 +20,4 @@ Faur is a simple python aur helper built for ricers. It is built with the awesom
 ---
 
 # Installation
+Eventually I will make an aur package, but right now you need to do it manually.
