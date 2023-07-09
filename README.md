@@ -19,4 +19,4 @@ Faur is a simple python aur helper built for ricers. It is built with the awesom
 
 ---
 
-#Installation
+# Installation
