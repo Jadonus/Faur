@@ -1,5 +1,7 @@
 
-<img align="center" title="a title" alt="Alt text" src="ascii-.png">
+<p align="center">
+  <img src="ascii-.svg" />
+</p>
 <p align="center">
 The fancy AUR helper
 </p>
