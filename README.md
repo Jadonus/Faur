@@ -1,4 +1,4 @@
-<p style="text-align: center;">Centered text</p>
+<div style="text-align:center">
 
 #Faur
 The fancy AUR helper
