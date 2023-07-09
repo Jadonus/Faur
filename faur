@@ -45,9 +45,9 @@ def install():
                 
 
 
-        os.path.expanduser('~') 
+        home = os.path.expanduser('~') 
         hello = pkgbuilder.ui.get_termwidth()
-        packagenamepath = ~ + packagename
+        packagenamepath = home + packagename
         try:
             pkgbuilder.build.auto_build(packagename)
             print(Fore.RED +'''
