@@ -24,7 +24,7 @@ def install():
             response = requests.get(url)
             data = response.json()
 
-            if "results" in data:
+            if "results" in data and data["results"]:
                  package_info = data["results"][0]
                  last_modified_timestamp = package_info["LastModified"]
                  last_modified_date = datetime.fromtimestamp(last_modified_timestamp)
@@ -42,6 +42,9 @@ def install():
                 print('ok, continuing')
             else:
                 exit()
+        else:
+            print(f"{packagename} is up to date")
+
                 
 
 
@@ -163,7 +166,6 @@ else:
         dashboard()
     except KeyboardInterrupt:
         exit()
-
 
 
 
